@@ -27,7 +27,7 @@ export default function Contact() {
     {
       label: "LinkedIn",
       value: "Cheng Chanpanha",
-      href: "https://www.linkedin.com/in/cheng-chanpanha",
+      href: "https://www.linkedin.com/in/cheng-chanpanha-7a7999371/",
       icon: <Linkedin size={24} />,
       color: "bg-indigo-50 text-indigo-600",
     },
