@@ -80,15 +80,6 @@ const projectsData = [
         ]
     },
     {
-        title: "ងាយម្រា App",
-        date: "Oct 2025 - Nov 2025",
-        role: "Team Leader",
-        bullets: [
-            "Learned and applied Dart programming for mobile application development.",
-            "Implemented object-oriented programming (OOP) concepts to design structured and maintainable code."
-        ]
-    },
-    {
         title: "Quiz Fun",
         date: "May 2025 - Jul 2025",
         role: "Team Member",
