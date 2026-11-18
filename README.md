@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cheng Chanpanha — Portfolio
 
-## Getting Started
+A personal portfolio with an Engineering Notebook design: warm paper surfaces, green accents, contribution maps, and accessible project disclosures. Built with Next.js 16, React 19, Tailwind CSS 4, and Lucide icons.
 
-First, run the development server:
+## Run locally
 
-```bash
+```sh
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the Local URL printed by Next.js (normally http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Development uses Next.js's supported Webpack mode. On this Next.js 16.1.1 setup, Turbopack development repeatedly resolves the Tailwind CSS import from the parent directory instead of the application directory. `npm run dev` uses `next dev --webpack` to avoid that reproduced failure; production builds keep the existing Turbopack setup.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Checks and production
 
-## Learn More
+```sh
+npm run lint
+npm test
+npx tsc --noEmit --incremental false
+npm run build
+npm run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+The existing `next/font` integration downloads Inter and Outfit during a fresh build, so the build needs access to Google Fonts. Fonts are then served by Next.js. No new dependencies or service credentials are required.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Routes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `/`: introduction, three featured projects, skills, and contact invitation.
+- `/about`: biography, education, both existing experience entries, and languages.
+- `/projects`: all nine existing projects, with expandable contribution notes.
+- `/contact`: personal/school email, Telegram, LinkedIn, both GitHub accounts, location, and phone.
 
-## Deploy on Vercel
+## Edit content
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `app/data/profile.ts`: identity, contact URLs, skills, education, languages.
+- `app/data/projects.ts`: original project contributions and experience entries, presentation summaries, topic tags, and featured selection.
+- `app/data/technology.ts`: local logo identifiers and explicitly documented tool-to-project connections.
+- `app/globals.css`: design tokens, responsive layouts, focus styles, and reduced-motion rules.
+- `app/components/`: shared navigation, footer, section headings, project entries, and contact banner.
+- `public/my_image.jpg`: original portrait, delivered with responsive `next/image` sizes.
+- `public/technology/`: local Devicon v2.17.0 SVGs, source manifest, and retained license. Original colors are preserved; logos have visible technology names.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notebook interactions
+
+The homepage toolkit includes a “Where I used it” explorer. Select Java, Flutter, Figma, MongoDB, Redis, or Nginx to see the documented project contribution. All four default connections are server-rendered; the full project collection remains available separately. Project anchor links open the associated native disclosure on arrival, including direct URLs and browser history navigation.
+
+Decorative motion includes the hero underline and short entrance, section rules, contribution-map connectors, logo introductions, portrait corner feedback, timeline markers, contact stamps, and footer rule. `NotebookMotion` uses one cleaned-up IntersectionObserver; text stays visible before JavaScript and with reduced motion. Hover feedback is supplemental to named links and keyboard focus. Contact includes an explicit Copy email button with success/failure announcements and the original mail link as fallback.
+
+`npm test` runs eight focused Node tests for selection/reset, explicit evidence mappings and local assets, clipboard success/failure, deep links/history, modifier-click behavior, malformed hashes, and motion preference cleanup. These use the existing TypeScript compiler and a small component/effect harness; no testing dependency was added. They do not replace browser accessibility, viewport, clipboard-permission, or performance checks.
+
+Personal field notes remain dependent on owner-supplied content. The optional software playground needs the separate brief described in `TOOL_LOGOS_AND_MOTION_PLAN.md`.
+
+Project figures are labeled contribution maps. They summarize documented contribution areas; they are not product screenshots or verified system architecture. No invented project repository URLs, live demos, metrics, or resume downloads are included. Add those only when approved assets and links are available. The About link replaces the former misleading Full Resume action.
+
+The legacy `Hero.jsx` and `ProjectBento.jsx` are dormant and do not render on any route. Their sample content is not part of the portfolio inventory. Framer Motion remains installed from the existing project; the active route entrance uses a small CSS animation with a reduced-motion override.
+
+## Manual verification
+
+Check every route at 320, 390, 768, 1024, and 1440 CSS pixels; also check 200% zoom. Verify keyboard focus, skip navigation, active route labels, native project disclosures, back/forward navigation, project anchors, and reduced-motion behavior. Check long email addresses and the Khmer project name for wrapping and font support. Test the portrait response and all contact destinations without sending messages.
+
+Run Lighthouse against `npm run start` for production measurements. See `PLAN.md` for detailed acceptance targets and the implementation status. Local compile/HTTP checks do not establish visual correctness or accessibility/performance scores.
+
+No deployment or new hosting configuration is included in this update.

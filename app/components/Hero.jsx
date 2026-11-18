@@ -12,7 +12,7 @@ export default function Hero() {
           </div>
 
           <h1 className="text-5xl md:text-7xl font-display font-bold text-white mb-6 leading-tight">
-            Hi, I'm Panha. <br />
+            Hi, I’m Panha. <br />
             <span className="text-white/90">Frontend Developer.</span>
           </h1>
 
