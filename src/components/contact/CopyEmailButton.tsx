@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Check, Copy } from "lucide-react";
 
-export default function CopyEmail({ email }: { email: string }) {
+export default function CopyEmailButton({ email }: { email: string }) {
   const [state, setState] = useState<"idle" | "copied" | "failed">("idle");
   const copy = async () => {
     try {

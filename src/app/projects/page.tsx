@@ -1,12 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { projects, featuredProjects } from "../data/projects";
-import ProjectEntry, { ProjectArchiveEntry } from "../components/ProjectEntry";
-import SectionHeader from "../components/SectionHeader";
-import ContactBanner from "../components/ContactBanner";
+import { projects, featuredProjects } from "@/content/projects";
+import ProjectEntry, { ProjectArchiveEntry } from "@/components/projects/ProjectEntry";
+import SectionHeader from "@/components/ui/SectionHeader";
+import ContactBanner from "@/components/contact/ContactBanner";
 
-export const metadata = { title: "Projects", description: "Explore Cheng Chanpanha’s projects in backend development, web and mobile applications, databases, games, and machine learning." };
-export default function Projects() {
+export const metadata: Metadata = { title: "Projects", description: "Explore Cheng Chanpanha’s projects in backend development, web and mobile applications, databases, games, and machine learning." };
+export default function ProjectsPage() {
   const archive = projects.filter(project => !featuredProjects.some(featured => featured.slug === project.slug));
   return <main id="main-content" tabIndex={-1}>
     <section className="page-intro container"><p className="eyebrow"><span>THE PROJECT NOTEBOOK</span> / {String(projects.length).padStart(2, "0")} ENTRIES</p><h1>Ideas, built<br />into <em>software.</em></h1><div className="intro-bottom"><p>A collection of things I’ve helped build, improve, and bring to life. Open a project to explore my contribution.</p><a className="text-link" href="#featured-projects">Start exploring <ArrowUpRight size={18} aria-hidden="true" /></a></div></section>

@@ -14,7 +14,7 @@ Implementation record:
 - Original logo colors were chosen to preserve the supplied artwork. No new skills, dependencies, tracking, backend, or hosting were added. The existing Webpack development workaround is retained.
 - Deferred as specified by the brief: personal field notes and handwritten personal details require your actual content; the optional software playground requires its separate approval/brief. No project decisions or personal habits were invented.
 
-This extends `PLAN.md`. Keep the green Engineering Notebook identity, Software Developer positioning, four existing routes, actual portrait, and existing project inventory.
+This extends the [portfolio redesign plan](portfolio-redesign.md). Keep the green Engineering Notebook identity, Software Developer positioning, four existing routes, actual portrait, and existing project inventory.
 
 ## 1. Creative idea: a notebook that responds
 
@@ -34,7 +34,7 @@ Recommended signature moments: the hero notebook composition, contribution-map t
 
 ### Inventory supported by the current portfolio
 
-The following names already appear in `app/data/profile.ts`. Their inclusion reflects the existing portfolio, not a newly verified level of expertise.
+The following names already appear in `src/content/profile.ts`. Their inclusion reflects the existing portfolio, not a newly verified level of expertise.
 
 | Group | Proposed labeled logos |
 | --- | --- |
@@ -159,14 +159,14 @@ Suggested future component changes:
 
 | Area | Proposed work |
 | --- | --- |
-| `app/data/profile.ts` | Add approved logo identifiers and explicit evidence links; keep names and claims centralized |
-| `app/data/projects.ts` | Add only your supplied lessons/decisions and confirmed tool mappings |
+| `src/content/profile.ts` | Add approved logo identifiers and explicit evidence links; keep names and claims centralized |
+| `src/content/projects.ts` | Add only your supplied lessons/decisions and confirmed tool mappings |
 | `public/technology/` | Store approved SVG assets and a source/attribution record |
 | `ToolBadge` | Shared visible name, logo, and optional real action; avoid one-off markup per technology |
 | `ToolEvidenceExplorer` | Isolated client interaction for supported mappings |
 | `ProjectEntry` | Existing map/disclosure behavior plus the approved reveal and deep-link expansion |
 | `SectionHeader` | Optional one-time divider reveal, not a blanket text-hiding wrapper |
-| `app/globals.css` | Shared timing/easing tokens, focus feedback, and reduced-motion overrides |
+| `src/app/globals.css` | Shared timing/easing tokens, focus feedback, and reduced-motion overrides |
 
 Read-only sections should remain server-rendered. Scope client code to interactions. Use one reusable viewport observer strategy where needed, clean up observers, and avoid per-frame React updates or a scroll listener per item. Essential text and project links must work before client hydration and when decorative JavaScript is unavailable.
 
@@ -197,7 +197,7 @@ Recommend shipping the logo pass and core motion first, then adding the two sign
 | Deep links | Open each project anchor directly and from the tool explorer; the correct contribution notes are visible. Test browser back/forward and reload. |
 | Motion pacing | Scroll down and back up. Reveals do not endlessly replay, multiple effects do not compete, and text is readable immediately. |
 | No JavaScript | With client JavaScript disabled, the portfolio still exposes names, project descriptions, ordinary navigation, and native disclosures; advanced tools degrade to readable content. |
-| Performance | Compare production builds before/after under identical mobile Lighthouse settings and inspect a representative interaction trace. No persistent off-screen animation, uncleaned observer, or avoidable bundle growth. Keep the performance targets in `PLAN.md`; do not claim a score without measuring it. |
+| Performance | Compare production builds before/after under identical mobile Lighthouse settings and inspect a representative interaction trace. No persistent off-screen animation, uncleaned observer, or avoidable bundle growth. Keep the performance targets in the [portfolio redesign plan](portfolio-redesign.md); do not claim a score without measuring it. |
 | Correctness | Build, lint, and TypeScript checks pass; all four routes and local logo assets resolve; no browser errors occur during the core journeys. |
 | Accessibility | Manually inspect focus order and announcements; run an accessibility scan. Decorative logos and SVG paths do not add repetitive screen-reader noise. |
 

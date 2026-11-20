@@ -1,7 +1,7 @@
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import Image from 'next/image';
 
-export default function Hero() {
+export default function LegacyHero() {
   return (
     <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">

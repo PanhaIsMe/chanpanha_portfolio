@@ -3,8 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowUpRight, RotateCcw } from "lucide-react";
-import { projects } from "../data/projects";
-import { evidenceTools, toolEvidence } from "../data/technology";
+import { projects } from "@/content/projects";
+import { evidenceTools, toolEvidence } from "@/content/technologies";
 import ToolBadge, { ToolMark } from "./ToolBadge";
 
 export default function ToolEvidenceExplorer() {

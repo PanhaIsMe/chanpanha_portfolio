@@ -27,7 +27,7 @@ const projects = [
   },
 ];
 
-export default function ProjectBento() {
+export default function LegacyProjectBento() {
   return (
     <section id="projects" className="py-32 bg-gray-50/50">
       <div className="max-w-5xl mx-auto px-6">

@@ -2,17 +2,17 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Code2, Database, Layers3 } from "lucide-react";
-import { profile, skillGroups } from "./data/profile";
-import { featuredProjects } from "./data/projects";
-import SectionHeader from "./components/SectionHeader";
-import ProjectEntry, { ProjectsJumpLink } from "./components/ProjectEntry";
-import ContactBanner from "./components/ContactBanner";
-import ToolBadge from "./components/ToolBadge";
-import ToolEvidenceExplorer from "./components/ToolEvidenceExplorer";
+import { profile, skillGroups } from "@/content/profile";
+import { featuredProjects } from "@/content/projects";
+import SectionHeader from "@/components/ui/SectionHeader";
+import ProjectEntry, { ProjectsJumpLink } from "@/components/projects/ProjectEntry";
+import ContactBanner from "@/components/contact/ContactBanner";
+import ToolBadge from "@/components/technology/ToolBadge";
+import ToolEvidenceExplorer from "@/components/technology/ToolEvidenceExplorer";
 
 export const metadata: Metadata = { title: "Cheng Chanpanha · Software Developer", description: "Software developer and fourth-year student at CADT in Phnom Penh. Explore my backend, web, mobile, and machine learning projects." };
 
-export default function Home() {
+export default function HomePage() {
   const skillIcons = [Code2, Database, Layers3];
   return <main id="main-content" tabIndex={-1}>
     <section className="hero container" data-motion="hero">
@@ -24,7 +24,7 @@ export default function Home() {
         <div className="hero-footnote"><span className="status-dot" /> Open to opportunities <span className="hero-footnote-rule" /><span>Web · Backend · Mobile</span></div>
       </div>
       <div className="hero-portrait-area">
-        <Link href="/about" className="portrait-frame" aria-label="About Cheng Chanpanha"><div className="portrait-corner" aria-hidden="true">+</div><div className="portrait-photo"><Image src="/my_image.jpg" alt="Cheng Chanpanha" fill priority sizes="(max-width: 600px) 80vw, (max-width: 900px) 50vw, 380px" className="portrait-image" /></div><div className="portrait-caption"><span>THE PERSON BEHIND THE CODE</span><span aria-hidden="true">↗</span></div></Link>
+        <Link href="/about" className="portrait-frame" aria-label="About Cheng Chanpanha"><div className="portrait-corner" aria-hidden="true">+</div><div className="portrait-photo"><Image src="/images/cheng-chanpanha.jpg" alt="Cheng Chanpanha" fill priority sizes="(max-width: 600px) 80vw, (max-width: 900px) 50vw, 380px" className="portrait-image" /></div><div className="portrait-caption"><span>THE PERSON BEHIND THE CODE</span><span aria-hidden="true">↗</span></div></Link>
         <div className="portrait-stamp" aria-hidden="true"><Code2 size={24} /><span>Always<br />building.</span></div>
         <p className="portrait-margin-note">A work in progress. Just like good software.</p>
       </div>

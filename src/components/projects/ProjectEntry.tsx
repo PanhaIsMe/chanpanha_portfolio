@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
-import type { Project } from "../data/projects";
-import { toolsForProject } from "../data/technology";
-import ToolBadge from "./ToolBadge";
+import type { Project } from "@/content/projects";
+import { toolsForProject } from "@/content/technologies";
+import ToolBadge from "@/components/technology/ToolBadge";
 
 function ProjectTopics({ project }: { project: Project }) {
   const tools = toolsForProject(project.slug);

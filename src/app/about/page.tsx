@@ -1,17 +1,18 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, MapPin } from "lucide-react";
-import { education, languages, profile } from "../data/profile";
-import { experiences } from "../data/projects";
-import SectionHeader from "../components/SectionHeader";
-import ContactBanner from "../components/ContactBanner";
+import { education, languages, profile } from "@/content/profile";
+import { experiences } from "@/content/projects";
+import SectionHeader from "@/components/ui/SectionHeader";
+import ContactBanner from "@/components/contact/ContactBanner";
 
-export const metadata = { title: "About", description: "Meet Cheng Chanpanha, a fourth-year CADT student with backend development experience and an interest in machine learning and deep learning." };
-export default function About() {
+export const metadata: Metadata = { title: "About", description: "Meet Cheng Chanpanha, a fourth-year CADT student with backend development experience and an interest in machine learning and deep learning." };
+export default function AboutPage() {
   return <main id="main-content" tabIndex={-1}>
     <section className="page-intro container"><p className="eyebrow">A PERSON, THEN A DEVELOPER</p><h1>Curiosity is<br />the <em>starting point.</em></h1></section>
     <section className="container about-profile">
-      <div className="about-photo"><Image src="/my_image.jpg" alt="Cheng Chanpanha" fill sizes="(max-width: 700px) 90vw, 400px" className="portrait-image" priority /><span className="about-photo-caption">CHENG CHANPANHA / SOFTWARE DEVELOPER</span></div>
+      <div className="about-photo"><Image src="/images/cheng-chanpanha.jpg" alt="Cheng Chanpanha" fill sizes="(max-width: 700px) 90vw, 400px" className="portrait-image" priority /><span className="about-photo-caption">CHENG CHANPANHA / SOFTWARE DEVELOPER</span></div>
       <div className="about-biography">
         <p className="eyebrow">HELLO, I’M PANHA.</p>
         <h2>A software developer,<br />still asking “how?”</h2>

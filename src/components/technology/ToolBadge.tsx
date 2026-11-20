@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { technologyByName } from "../data/technology";
+import { technologyByName } from "@/content/technologies";
 
 export function ToolMark({ name, size = 22 }: { name: string; size?: number }) {
   const technology = technologyByName[name];

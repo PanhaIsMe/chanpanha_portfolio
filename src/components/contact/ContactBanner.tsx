@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { profile } from "../data/profile";
+import { profile } from "@/content/profile";
 
 export default function ContactBanner() {
   return <section className="contact-banner" aria-labelledby="contact-heading"><div className="container contact-banner-inner">

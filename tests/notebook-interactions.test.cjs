@@ -27,8 +27,10 @@ function harness(overrides = {}, globals = {}) {
     const customRequire = name => {
       if (name in overrides) return overrides[name];
       if (name === 'react') return hooks;
-      if (name.startsWith('.')) {
-        const base = path.resolve(path.dirname(file), name);
+      if (name.startsWith('.') || name.startsWith('@/')) {
+        const base = name.startsWith('@/')
+          ? path.resolve(__dirname, '../src', name.slice(2))
+          : path.resolve(path.dirname(file), name);
         const target = [base, base + '.ts', base + '.tsx', base + '.jsx'].find(candidate => fs.existsSync(candidate));
         return load(target);
       }
@@ -55,7 +57,7 @@ const links = tree => nodes(tree, n => n.props?.href).map(n => n.props.href);
 
 test('tool selection exposes documented projects and reset restores all four connections', () => {
   const h = harness();
-  const Explorer = h.load('app/components/ToolEvidenceExplorer.tsx').default;
+  const Explorer = h.load('src/components/technology/ToolEvidenceExplorer.tsx').default;
   let tree = Explorer();
   assert.equal(links(tree).length, 4);
   assert.equal(button(tree, 'Reset').props.disabled, true);
@@ -76,7 +78,7 @@ test('tool selection exposes documented projects and reset restores all four con
 
 test('all declared tool assets exist, and generic SQL does not imply MySQL or PostgreSQL', () => {
   const h = harness();
-  const technology = h.load('app/data/technology.ts');
+  const technology = h.load('src/content/technologies.ts');
   for (const { asset } of Object.values(technology.technologyByName)) {
     const svg = fs.readFileSync(`public/technology/${asset}.svg`, 'utf8');
     assert.match(svg, /<svg[\s>]/);
@@ -90,7 +92,7 @@ test('all declared tool assets exist, and generic SQL does not imply MySQL or Po
 test('copy email announces success after writing the actual address', async () => {
   const writes = [];
   const h = harness({}, { navigator: { clipboard: { writeText: async value => writes.push(value) } } });
-  const Copy = h.load('app/components/CopyEmail.tsx').default;
+  const Copy = h.load('src/components/contact/CopyEmailButton.tsx').default;
   await button(Copy({ email: 'panha@example.test' }), 'Copy email').props.onClick();
   const tree = Copy({ email: 'panha@example.test' });
   assert.deepEqual(writes, ['panha@example.test']);
@@ -101,7 +103,7 @@ test('copy email announces success after writing the actual address', async () =
 test('clipboard rejection and unsupported browsers retain a retry action and honest feedback', async () => {
   for (const navigator of [{}, { clipboard: { writeText: async () => { throw new Error('denied'); } } }]) {
     const h = harness({}, { navigator });
-    const Copy = h.load('app/components/CopyEmail.tsx').default;
+    const Copy = h.load('src/components/contact/CopyEmailButton.tsx').default;
     await button(Copy({ email: 'panha@example.test' }), 'Copy email').props.onClick();
     const tree = Copy({ email: 'panha@example.test' });
     assert.ok(button(tree, 'Copy email'));
@@ -125,7 +127,7 @@ function anchorHarness(hash, featured = false) {
     document: { getElementById: value => value === 'school-management' || value === 'domrov-lms' ? target : null, addEventListener: (name, cb) => listeners.set(name, cb), removeEventListener: name => listeners.delete(name) },
     requestAnimationFrame: cb => { frames.set(++id, cb); return id; }, cancelAnimationFrame: key => frames.delete(key),
   });
-  h.load('app/components/ProjectAnchorSync.tsx').default();
+  h.load('src/components/projects/ProjectAnchorSync.tsx').default();
   const cleanup = h.effects[0]();
   const flush = () => { for (const cb of [...frames.values()]) cb(); frames.clear(); };
   return { details, target, listeners, location, flush, cleanup, Element };
@@ -182,7 +184,7 @@ test('motion honors initial reduced motion and disconnects its observer on prefe
     window: { matchMedia: () => media, IntersectionObserver: Observer }, IntersectionObserver: Observer,
     document: { querySelectorAll: () => element.dataset.revealed ? [] : [element] },
   });
-  h.load('app/components/NotebookMotion.tsx').default();
+  h.load('src/components/layout/NotebookMotion.tsx').default();
   const cleanup = h.effects[0]();
   assert.equal(observed.size, 0);
   media.matches = false; mediaListeners.get('change')();

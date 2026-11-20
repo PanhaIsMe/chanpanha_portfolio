@@ -45,15 +45,18 @@ The existing `next/font` integration downloads Inter and Outfit during a fresh b
 
 Each submitted name, reply email, and message goes to the configured chat. The contact page keeps a direct email link available if delivery fails. The form uses a Next.js server route and requires a deployment that supports it.
 
-## Edit content
+## Project structure
 
-- `app/data/profile.ts`: identity, contact URLs, skills, education, languages.
-- `app/data/projects.ts`: original project contributions and experience entries, presentation summaries, topic tags, and featured selection.
-- `app/data/technology.ts`: local logo identifiers and explicitly documented tool-to-project connections.
-- `app/globals.css`: design tokens, responsive layouts, focus styles, and reduced-motion rules.
-- `app/components/`: shared navigation, footer, section headings, project entries, and contact banner.
-- `public/my_image.jpg`: original portrait, delivered with responsive `next/image` sizes.
-- `public/technology/`: local Devicon v2.17.0 SVGs, source manifest, and retained license. Original colors are preserved; logos have visible technology names.
+- `src/app/` contains Next.js pages, the root layout, global styles, and the contact API route. Next.js route filenames follow the `page.tsx`, `layout.tsx`, and `route.ts` conventions.
+- `src/components/` groups reusable components into `layout`, `contact`, `projects`, `technology`, and `ui`.
+- `src/content/profile.ts` holds identity, contact methods, skills, education, and languages.
+- `src/content/projects.ts` holds project entries, featured selections, and experience.
+- `src/content/technologies.ts` maps local logos and documented tool-to-project connections.
+- `public/images/cheng-chanpanha.jpg` is the portfolio portrait, served using responsive `next/image` sizes.
+- `public/technology/` contains the Devicon v2.17.0 SVGs, source manifest, and license.
+- `docs/` contains planning and redesign notes. `tests/` contains interaction tests.
+
+Imports starting with `@/` resolve to `src/`.
 
 ## Notebook interactions
 
@@ -63,16 +66,16 @@ Decorative motion includes the hero underline and short entrance, section rules,
 
 `npm test` runs eight focused Node tests for selection/reset, explicit evidence mappings and local assets, clipboard success/failure, deep links/history, modifier-click behavior, malformed hashes, and motion preference cleanup. These use the existing TypeScript compiler and a small component/effect harness; no testing dependency was added. They do not replace browser accessibility, viewport, clipboard-permission, or performance checks.
 
-Personal field notes remain dependent on owner-supplied content. The optional software playground needs the separate brief described in `TOOL_LOGOS_AND_MOTION_PLAN.md`.
+Personal field notes remain dependent on owner-supplied content. The optional software playground needs the separate brief described in the [technology and motion plan](docs/technology-and-motion-plan.md).
 
 Project figures are labeled contribution maps. They summarize documented contribution areas; they are not product screenshots or verified system architecture. No invented project repository URLs, live demos, metrics, or resume downloads are included. Add those only when approved assets and links are available. The About link replaces the former misleading Full Resume action.
 
-The legacy `Hero.jsx` and `ProjectBento.jsx` are dormant and do not render on any route. Their sample content is not part of the portfolio inventory. Framer Motion remains installed from the existing project; the active route entrance uses a small CSS animation with a reduced-motion override.
+The sample components in `src/components/legacy/` are archived. The active route entrance uses a small CSS animation with a reduced-motion override.
 
 ## Manual verification
 
 Check every route at 320, 390, 768, 1024, and 1440 CSS pixels; also check 200% zoom. Verify keyboard focus, skip navigation, active route labels, native project disclosures, back/forward navigation, project anchors, and reduced-motion behavior. Check long email addresses and the Khmer project name for wrapping and font support. Test the portrait response and all contact destinations without sending messages.
 
-Run Lighthouse against `npm run start` for production measurements. See `PLAN.md` for detailed acceptance targets and the implementation status. Local compile/HTTP checks do not establish visual correctness or accessibility/performance scores.
+Run Lighthouse against `npm run start` for production measurements. See the [portfolio redesign plan](docs/portfolio-redesign.md) for detailed acceptance targets and the implementation status. Local compile/HTTP checks do not establish visual correctness or accessibility/performance scores.
 
 No deployment or new hosting configuration is included in this update.

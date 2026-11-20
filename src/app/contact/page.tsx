@@ -1,11 +1,12 @@
+import type { Metadata } from "next";
 import { ArrowUpRight, Github, GraduationCap, Linkedin, Mail, MapPin, Phone, Send } from "lucide-react";
-import { contactMethods, profile } from "../data/profile";
-import CopyEmail from "../components/CopyEmail";
-import ContactForm from "../components/ContactForm";
+import { contactMethods, profile } from "@/content/profile";
+import CopyEmailButton from "@/components/contact/CopyEmailButton";
+import ContactForm from "@/components/contact/ContactForm";
 
-export const metadata = { title: "Contact", description: "Send Cheng Chanpanha a message about software development opportunities or collaboration." };
+export const metadata: Metadata = { title: "Contact", description: "Send Cheng Chanpanha a message about software development opportunities or collaboration." };
 const icons = { email: Mail, school: GraduationCap, telegram: Send, linkedin: Linkedin, github: Github };
-export default function Contact() {
+export default function ContactPage() {
   return <main id="main-content" tabIndex={-1}>
     <section className="page-intro container"><p className="eyebrow"><span className="status-dot" /> OPEN TO OPPORTUNITIES</p><h1>Good things start<br />with a <em>hello.</em></h1><div className="intro-bottom"><p>A role, a project, or a shared interest in building software. I’d like to hear about it.</p><span className="mono">LET’S CONNECT ↗</span></div></section>
     <section className="container contact-main" aria-labelledby="message-heading">
@@ -13,7 +14,7 @@ export default function Contact() {
       <div className="contact-primary">
         <h2>Prefer email?</h2>
         <a href={`mailto:${profile.email}`} className="primary-email">{profile.email}<ArrowUpRight size={30} aria-hidden="true" /></a>
-        <CopyEmail email={profile.email} />
+        <CopyEmailButton email={profile.email} />
         <div className="contact-location"><MapPin size={17} aria-hidden="true" /><span>{profile.address}</span></div>
         <a className="contact-phone" href="tel:+85510667732"><Phone size={17} aria-hidden="true" />{profile.phone}</a>
       </div>

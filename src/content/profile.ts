@@ -16,7 +16,7 @@ export const contactMethods = [
   { label: "LinkedIn", value: profile.name, href: profile.linkedin, kind: "linkedin" },
   { label: "GitHub · Main", value: "ChanpanhaCheng", href: profile.github, kind: "github" },
   { label: "GitHub · Alt", value: "PanhaIsMe", href: "https://github.com/PanhaIsMe", kind: "github" },
-];
+] as const;
 
 // Technologies documented in the portfolio and CV.
 export const skillGroups = [

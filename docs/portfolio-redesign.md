@@ -5,6 +5,8 @@ Audit date: 11 November 2026.
 Confirmed preferences: Engineering Notebook direction, preserving the existing green identity; primary positioning as a software developer. Backend experience is a supporting strength within this broader role. Your later request authorized implementation of this roadmap. Remaining factual questions still require your input.
 Original planning scope: inspect the existing portfolio and document an actionable upgrade plan. That audit is preserved below as the baseline; the subsequent implementation updates the existing application locally without deployment or framework migration.
 
+The [README](../README.md#project-structure) documents the current directory structure. The audit below uses the original paths.
+
 Implementation record:
 
 - Redesigned all four routes with warm paper surfaces, existing emerald/forest green, Outfit/Inter, responsive layouts, and Software Developer positioning.

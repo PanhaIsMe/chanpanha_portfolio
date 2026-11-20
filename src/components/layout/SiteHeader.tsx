@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const links = [ { name: "Home", href: "/" }, { name: "About", href: "/about" }, { name: "Projects", href: "/projects" }, { name: "Contact", href: "/contact" } ];
 
-export default function Navbar() {
+export default function SiteHeader() {
   const pathname = usePathname();
   return <header className="site-header"><div className="container header-inner">
     <Link href="/" className="brand" aria-label="Panha — Home"><span className="brand-mark" aria-hidden="true">p<span>.</span></span><span className="brand-label">PANHA<span>SOFTWARE DEVELOPER</span></span></Link>
