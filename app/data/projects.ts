@@ -110,6 +110,23 @@ const presentation = [
   { slug: "computer-store", category: "Database administration", summary: "Database design, automatic backups, and query improvements for a computer store system.", tags: ["Database design", "Backups", "Queries"], notes: ["Data management", "Automatic backups", "Query improvements"] },
 ] satisfies Omit<Project, "title" | "date" | "role" | "bullets">[];
 
+const ministryProject: Project = {
+  title: "Project Management System",
+  date: "May 2026 – Jul 2026",
+  role: "Backend Developer Intern",
+  slug: "mpwt-project-management-system",
+  category: "Ministry of Public Works and Transport",
+  summary: "Contributed to a web application for the Ministry of Public Works and Transport that brings project planning, task assignment, progress tracking, and team discussions into one workspace.",
+  bullets: [
+    "Built REST APIs in NestJS for managing projects, activities, and tasks, including task assignment and status tracking.",
+    "Designed PostgreSQL database relationships with TypeORM to connect projects, tasks, assignees, and attachments.",
+    "Built the backend workflow that creates a chat for each new task and automatically adds the creator and assignees, keeping discussions tied to the work.",
+    "Contributed to real-time task updates with Socket.IO so reporters and assignees could see changes without refreshing the page.",
+  ],
+  tags: ["NestJS", "PostgreSQL", "TypeORM", "Socket.IO", "Task workflows"],
+  notes: ["Project and task APIs", "Database design", "Automatic task chat"],
+};
+
 const taskDurationProject: Project = {
   title: "Intelligent Task Duration Estimation",
   date: "Nov 2026 – Present",
@@ -128,15 +145,17 @@ const taskDurationProject: Project = {
 
 export const projects: Project[] = [
   ...originalProjects.map((project, index) => ({ ...project, title: project.title.trim(), date: project.date.trim(), ...presentation[index] })),
+  ministryProject,
   taskDurationProject,
 ];
-export const featuredProjects = [projects[0], projects[1], projects[6]];
+export const featuredProjects = [ministryProject, projects[0], projects[1]];
 export const experiences = [
     {
         title: "Ministry of Public Works and Transport",
-        date: "May 2026 – Jul 2026",
-        role: "Backend Developer",
+        date: ministryProject.date,
+        role: ministryProject.role,
         description: "Built REST APIs for a project management system, designed its database, and implemented business logic.",
+        projectSlug: ministryProject.slug,
     },
     {
         title: "Next-Gen Engagement",

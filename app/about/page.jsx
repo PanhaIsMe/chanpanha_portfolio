@@ -23,7 +23,20 @@ export default function About() {
       </div>
     </section>
     <section className="section-pad container" id="education"><SectionHeader number="01" label="FOUNDATIONS" title="Education." /><div className="timeline">{education.map(item => <article className="timeline-item" data-motion="timeline" key={item.title}><p className="mono timeline-date">{item.date}</p><div><h3>{item.title}</h3><p>{item.institution}</p></div></article>)}</div></section>
-    <section className="experience-section section-pad" id="experience"><div className="container"><SectionHeader number="02" label="WORK & VOLUNTEERING" title="Experience." /><div className="timeline">{experiences.map(item => <article className="timeline-item" data-motion="timeline" key={item.title}><p className="mono timeline-date">{item.date.trim()}</p><div><p className="project-role">{item.role}</p><h3>{item.title.trim()}</h3><p>{item.description}</p></div></article>)}</div></div></section>
+    <section className="experience-section section-pad" id="experience">
+      <div className="container">
+        <SectionHeader number="02" label="WORK & VOLUNTEERING" title="Experience." />
+        <div className="timeline">{experiences.map(item => <article className="timeline-item" data-motion="timeline" key={item.title}>
+          <p className="mono timeline-date">{item.date.trim()}</p>
+          <div>
+            <p className="project-role">{item.role}</p>
+            <h3>{item.title.trim()}</h3>
+            <p>{item.description}</p>
+            {item.projectSlug && <Link className="text-link" href={`/projects#${item.projectSlug}`}>Explore the internship project <ArrowUpRight size={17} aria-hidden="true" /></Link>}
+          </div>
+        </article>)}</div>
+      </div>
+    </section>
     <section className="section-pad container"><SectionHeader number="03" label="WAYS TO CONNECT" title="Languages." /><div className="language-grid">{languages.map((language, i) => <div className="language-item" key={language.name}><span className="mono">0{i + 1}</span><h3>{language.name}</h3><p>{language.level}</p></div>)}</div></section>
     <ContactBanner />
   </main>;
