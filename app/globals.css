@@ -197,18 +197,25 @@ summary::-webkit-details-marker { display: none; }
 .language-item p { color: var(--muted); font-size: 12px; margin-top: 6px; }
 .contact-main { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 70px; padding-block: 10px 70px; }
 .contact-primary { padding-top: 24px; }
-.contact-primary h2 { font-size: 35px; margin-top: 16px; }
+.contact-primary h2, .contact-form-panel h2 { font-size: clamp(28px, 5vw, 35px); }
 .primary-email { display: inline-flex; align-items: center; gap: 20px; font-family: var(--font-display); font-size: clamp(20px, 2.7vw, 34px); letter-spacing: -.03em; color: var(--green); padding-block: 17px; border-bottom: 1px solid var(--green); overflow-wrap: anywhere; }
 .primary-email:hover { color: var(--ink); }
-.contact-primary > p:not(.eyebrow) { color: var(--muted); font-size: 12px; margin-top: 20px; }
 .contact-location, .contact-phone { display: flex; align-items: center; gap: 11px; font-size: 12px; color: var(--muted); }
 .contact-location { margin-top: 34px; }
 .contact-phone { min-height: 44px; margin-top: 4px; }
-.contact-note { padding: 35px; background: var(--mint); border: 1px solid #cbd8c6; position: relative; transform: rotate(2deg); }
-.contact-note .mono { color: #4c6552; }
-.contact-note > p { margin-block: 25px; font-family: var(--font-display); font-size: 37px; line-height: 1.17; letter-spacing: -.035em; }
-.note-signature { font-family: var(--font-display); color: var(--green); font-size: 20px; }
-.contact-note-mark { position: absolute; right: 23px; bottom: 17px; color: var(--green); font-size: 42px; }
+.contact-form-panel { padding: clamp(20px, 4vw, 35px); background: var(--mint); border: 1px solid #cbd8c6; border-radius: 4px; }
+.contact-form-panel > p { color: var(--muted); font-size: 13px; margin-block: 8px 22px; }
+.contact-form-fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; min-width: 0; }
+.contact-form-fields label { font-size: 13px; font-weight: 500; }
+.contact-form-fields input:not([hidden]), .contact-form-fields textarea {
+  width: 100%; min-height: 44px; padding: 10px 12px; margin-bottom: 8px;
+  background: var(--paper); border: 1px solid #a6b6aa; border-radius: 4px; font: inherit; color: var(--ink);
+}
+.contact-form-fields textarea { resize: vertical; }
+.contact-form-fields button { justify-self: start; cursor: pointer; }
+.contact-form-fields button:disabled { opacity: .7; cursor: wait; }
+.contact-form-status { color: var(--ink); font-size: 13px; }
+.contact-form-status:not(:empty) { margin-top: 12px; }
 .contact-channels { padding-bottom: 100px; }
 .contact-channels > h2 { margin-bottom: 20px; }
 .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); }
@@ -313,7 +320,6 @@ summary::-webkit-details-marker { display: none; }
   .contact-primary { padding-top: 0; }
   .primary-email { font-size: clamp(19px, 4.6vw, 30px); gap: 10px; }
   .primary-email svg { width: 22px; }
-  .contact-note { width: min(380px, 94%); justify-self: center; }
   .contact-grid { grid-template-columns: minmax(0, 1fr); }
   .contact-link, .contact-link:nth-child(even) { padding: 23px 5px; border-left: none; }
   .contact-channels { padding-bottom: 60px; }

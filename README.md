@@ -23,14 +23,27 @@ npm run build
 npm run start
 ```
 
-The existing `next/font` integration downloads Inter and Outfit during a fresh build, so the build needs access to Google Fonts. Fonts are then served by Next.js. No new dependencies or service credentials are required.
+The existing `next/font` integration downloads Inter and Outfit during a fresh build, so the build needs access to Google Fonts. Fonts are then served by Next.js.
 
 ## Routes
 
 - `/`: introduction, three featured projects, skills, and contact invitation.
-- `/about`: biography, education, both existing experience entries, and languages.
-- `/projects`: all nine existing projects, with expandable contribution notes.
-- `/contact`: personal/school email, Telegram, LinkedIn, both GitHub accounts, location, and phone.
+- `/about`: biography, education, experience, and languages.
+- `/projects`: all projects, with expandable contribution notes.
+- `/contact`: message form, personal and school email, Telegram, LinkedIn, both GitHub accounts, location, and phone.
+
+## Telegram contact alerts
+
+1. In Telegram, open [@BotFather](https://t.me/BotFather) and use `/newbot` to create a bot for the portfolio. Put its token in `.env.local` as `TELEGRAM_BOT_TOKEN`.
+2. Open the new bot’s chat from your own Telegram account and tap **Start**. Run this command from the portfolio directory to print private chat IDs for updates the new bot has received. [Telegram Bot API](https://core.telegram.org/bots/api#getupdates)
+
+   ```sh
+   node --env-file=.env.local -e 'fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/getUpdates`).then(r => r.json()).then(({ok, result}) => { if (!ok) throw Error(); console.log([...new Set(result.filter(u => u.message?.chat.type === "private").map(u => u.message.chat.id))].join("\n") || "No private chat found. Send your bot a message and try again."); }).catch(() => { console.error("Could not read Telegram updates. Check the bot token and try again."); process.exitCode = 1; })'
+   ```
+
+3. Add your chat ID as `TELEGRAM_CHAT_ID` in `.env.local`, then restart the development server. Set both variables in the hosting platform’s server environment to enable delivery on the live site. Keep the token in environment settings and out of Git.
+
+Each submitted name, reply email, and message goes to the configured chat. The contact page keeps a direct email link available if delivery fails. The form uses a Next.js server route and requires a deployment that supports it.
 
 ## Edit content
 

@@ -110,14 +110,39 @@ const presentation = [
   { slug: "computer-store", category: "Database administration", summary: "Database design, automatic backups, and query improvements for a computer store system.", tags: ["Database design", "Backups", "Queries"], notes: ["Data management", "Automatic backups", "Query improvements"] },
 ] satisfies Omit<Project, "title" | "date" | "role" | "bullets">[];
 
-export const projects: Project[] = originalProjects.map((project, index) => ({ ...project, title: project.title.trim(), date: project.date.trim(), ...presentation[index] }));
+const taskDurationProject: Project = {
+  title: "Intelligent Task Duration Estimation",
+  date: "Nov 2026 – Present",
+  role: "Academic project · In progress",
+  slug: "intelligent-task-duration-estimation",
+  category: "Machine learning",
+  summary: "Exploring whether historical software issues can help teams estimate how long tasks will take.",
+  bullets: [
+    "Analyzed and visualized issue-tracker data in a Python notebook to understand the fields available for estimation.",
+    "Checked for duplicate records and examined which timestamps were available to measure task duration.",
+    "Outlined how to compare regression models with a historical median baseline using a later period for evaluation.",
+  ],
+  tags: ["Python", "Data preprocessing", "Regression"],
+  notes: ["Dataset analysis", "Data preprocessing", "Evaluation planning"],
+};
+
+export const projects: Project[] = [
+  ...originalProjects.map((project, index) => ({ ...project, title: project.title.trim(), date: project.date.trim(), ...presentation[index] })),
+  taskDurationProject,
+];
 export const featuredProjects = [projects[0], projects[1], projects[6]];
 export const experiences = [
+    {
+        title: "Ministry of Public Works and Transport",
+        date: "May 2026 – Jul 2026",
+        role: "Backend Developer",
+        description: "Built REST APIs for a project management system, designed its database, and implemented business logic.",
+    },
     {
         title: "Next-Gen Engagement",
         date: "Aug 2025 - Sep 2025",
         role: "Database Trainer",
-        description: "Teaching freshmen students about database design.",
+        description: "Designed the training curriculum and taught database design to first-year university students.",
     },
     {
         title: "Winning University's Life event ",

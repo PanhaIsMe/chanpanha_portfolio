@@ -18,10 +18,10 @@ export const contactMethods = [
   { label: "GitHub · Alt", value: "PanhaIsMe", href: "https://github.com/PanhaIsMe", kind: "github" },
 ];
 
-// Technologies listed in the original portfolio, not inferred from project names.
+// Technologies documented in the portfolio and CV.
 export const skillGroups = [
-  { title: "Backend & systems", description: "APIs, authentication, business logic, and server-side applications.", skills: ["Node.js", "NestJS", "Express.js", "Java", "Spring Boot"] },
-  { title: "Data & infrastructure", description: "Database-driven applications, CRUD operations, and performance tools.", skills: ["PostgreSQL", "MySQL", "MongoDB", "Redis", "Nginx"] },
+  { title: "Backend & systems", description: "APIs, authentication, business logic, and server-side applications.", skills: ["Node.js", "NestJS", "Express.js", "TypeScript", "Java", "Spring Boot"] },
+  { title: "Data & infrastructure", description: "Databases, data preparation, and application performance.", skills: ["PostgreSQL", "MySQL", "MongoDB", "Python", "Redis", "Nginx"] },
   { title: "Web & mobile", description: "Responsive interfaces and cross-platform applications.", skills: ["React", "Next.js", "Flutter", "Figma"] },
 ];
 
@@ -31,6 +31,6 @@ export const education = [
 ];
 export const languages = [
   { name: "Khmer", level: "Native" },
-  { name: "English", level: "Intermediate" },
+  { name: "English", level: "Upper intermediate (B2)" },
   { name: "Japanese", level: "Basic" },
 ];
